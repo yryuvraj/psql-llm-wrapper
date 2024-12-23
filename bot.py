@@ -39,7 +39,7 @@ def generate_response(r):
     res = c.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "Convert the given SQL results into a clear, human-readable response."},
+            {"role": "system", "content": "Convert the given SQL results into a clear, human-readable response. Output only the trivial results of thr output, do not give the schema or the structure of the table."},
             {"role": "user", "content": f"Explain these SQL results in natural language: {r}"}
         ],
         temperature=0.7,
@@ -62,7 +62,7 @@ def main():
             print(f"SQL Query: {q}")
             
             
-            print("\nExecuting query...")
+            print("\nExecuting query..."    )
             r = run_query(q)
             f = format_rows_to_text(r)
             
